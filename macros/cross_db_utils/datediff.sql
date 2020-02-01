@@ -27,6 +27,6 @@
 
 {% macro postgres__datediff(first_date, second_date, datepart) %}
 
-    {{ exceptions.raise_compiler_error("macro datediff not implemented for this adapter") }}
+    DATE_PART('{{datepart}}', cast({{second_date}} as timestamptz) - cast({{first_date}} as timestamptz))
 
 {% endmacro %}
